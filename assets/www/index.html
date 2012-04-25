@@ -3,40 +3,90 @@
 <head>
     <meta name="viewport" content="width=320; user-scalable=no" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>PhoneGap</title>
+    <title>FIR (Faktury i Rachunki)</title>
     <link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="no title">
+    <link rel="stylesheet" href="css/jquery.mobile-1.1.0.min.css" type="text/css" media="screen" title="no title"/>
     <script type="text/javascript" charset="utf-8" src="js/cordova-1.6.1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.0.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
 
 </head>
-<body onload="init();" id="stage" class="theme">
-<h1>Welcome to Cordova!</h1>
-<h2>this file is located at assets/www/index.html</h2>
-<div id="info">
-    <h4>Platform: <span id="platform"> &nbsp;</span>,   Version: <span id="version">&nbsp;</span></h4>
-    <h4>UUID: <span id="uuid"> &nbsp;</span>,   Name: <span id="name">&nbsp;</span></h4>
-    <h4>Width: <span id="width"> &nbsp;</span>,   Height: <span id="height">&nbsp;
-                   </span>, Color Depth: <span id="colorDepth"></span></h4>
-</div>
-<dl id="accel-data">
-    <dt>X:</dt><dd id="x">&nbsp;</dd>
-    <dt>Y:</dt><dd id="y">&nbsp;</dd>
-    <dt>Z:</dt><dd id="z">&nbsp;</dd>
-</dl>
-<a href="#" class="btn large" onclick="toggleAccel();">Toggle Accelerometer</a>
-<a href="#" class="btn large" onclick="getLocation();">Get Location</a>
-<a href="tel:411" class="btn large">Call 411</a>
-<a href="#" class="btn large" onclick="beep();">Beep</a>
-<a href="#" class="btn large" onclick="vibrate();">Vibrate</a>
-<a href="#" class="btn large" onclick="show_pic();">Get a Picture</a>
-<a href="#" class="btn large" onclick="get_contacts();return false;">Get Phone's Contacts</a>
-<a href="#" class="btn large" onclick="check_network();return false;">Check Network</a>
-<dl>
-    <dt>Compass Heading:</dt><dd id="h">Off</dd>
-</dl>
-<a href="#" class="btn large" onclick="toggleCompass();return false;">Toggle Compass</a>
-<div id="viewport" class="viewport" style="display: none;">
-    <img style="width:60px;height:60px" id="test_img" src="" />
-</div>
+<body>
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="one">
+
+    <div data-role="header">
+        <h1>Multi-page</h1>
+    </div><!-- /header -->
+
+    <div data-role="content" >
+        <h2>One</h2>
+
+        <p>I have an id of "one" on my page container. I'm first in the source order so I'm shown when the page loads.</p>
+
+        <p>This is a multi-page boilerplate template that you can copy to build your first jQuery Mobile page. This template contains multiple "page" containers inside, unlike a <a href="page-template.html"> single page template</a> that has just one page within it.</p>
+        <p>Just view the source and copy the code to get started. All the CSS and JS is linked to the jQuery CDN versions so this is super easy to set up. Remember to include a meta viewport tag in the head to set the zoom level.</p>
+        <p>You link to internal pages by referring to the ID of the page you want to show. For example, to <a href="#two" >link</a> to the page with an ID of "two", my link would have a <code>href="#two"</code> in the code.</p>
+
+        <h3>Show internal pages:</h3>
+        <p><a href="#two" data-role="button">Show page "two"</a></p>
+        <p><a href="#popup"data-role="button" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-theme="d">
+        <h4>Page Footer</h4>
+    </div><!-- /footer -->
+</div><!-- /page one -->
+
+
+<!-- Start of second page: #two -->
+<div data-role="page" id="two" data-theme="a">
+
+    <div data-role="header">
+        <h1>Two</h1>
+    </div><!-- /header -->
+
+    <div data-role="content" data-theme="a">
+        <h2>Two</h2>
+        <p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>
+        <p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>
+        <p><a href="#one" data-direction="reverse" data-role="button" data-theme="b">Back to page "one"</a></p>
+
+    </div><!-- /content -->
+
+    <div data-role="footer">
+        <h4>Page Footer</h4>
+    </div><!-- /footer -->
+</div><!-- /page two -->
+
+
+<!-- Start of third page: #popup -->
+<div data-role="page" id="popup">
+
+    <div data-role="header" data-theme="e">
+        <h1>Dialog</h1>
+    </div><!-- /header -->
+
+    <div data-role="content" data-theme="d">
+        <h2>Popup</h2>
+        <p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>
+        <p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back to page "one"</a></p>
+    </div><!-- /content -->
+
+    <div data-role="footer">
+        <h4>Page Footer</h4>
+    </div><!-- /footer -->
+</div><!-- /page popup -->
+
+
+<script type="text/javascript">
+    $(document).bind( "mobileinit", function() {
+        // Make your jQuery Mobile framework configuration changes here!
+
+        $.mobile.allowCrossDomainPages = true;
+    });
+</script>
 </body>
 </html>
