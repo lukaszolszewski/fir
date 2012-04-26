@@ -2,9 +2,63 @@
     margin: 0 auto;
     float: none;
 }
+
 .text-center {
     text-align: center;
 }
-.text-left {
-    text-align: left;
+
+.text-center-resonse {
+    text-align: center;
+}
+.logo_fir {
+    /*background-image: url("../img/fir.png");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: bottom right;*/
+    /*width: 220px;*/
+    /*height: 143px;*/
+}
+.ui-body-a, .ui-overlay-a {
+    /*background: #444;*/
+    background: url("../img/fir_mini.png") no-repeat bottom right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(51%,#111111), color-stop(71%,#222222), color-stop(100%,#444444));
+
+}
+
+#mainPage {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+@media (min-width: 275px) and (max-width: 480px) {
+
+    .menu-button img {
+        width: 100px;
+        padding: 20px;
+    }
+
+    .text-center-resonse {
+        text-align: inherit;
+    }
+
+}
+
+@media (max-width: 275px) {
+
+    .menu-button img {
+        width: 100px;
+        padding: 20px;
+    }
+
+    .text-center-resonse {
+        text-align: center;
+    }
+
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+
+    .text-center-resonse {
+        text-align: inherit;
+    }
 }
