@@ -4,9 +4,12 @@
     <meta name="viewport" content="width=320; user-scalable=no" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>FIR (Faktury i Rachunki)</title>
-    <link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="no title">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" title="no title">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css" media="screen" title="no title">
     <link rel="stylesheet" href="css/jquery.mobile-1.1.0.min.css" type="text/css" media="screen" title="no title"/>
+    <link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="no title">
     <script type="text/javascript" charset="utf-8" src="js/cordova-1.6.1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.0.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
@@ -15,30 +18,31 @@
 <body>
 
 <!-- Start of first page: #one -->
-<div data-role="page" id="one">
+<div data-role="page" id="mainPage" data-theme="a">
 
     <div data-role="header">
-        <h1>Multi-page</h1>
+        <h1>Multi-page 3</h1>
     </div><!-- /header -->
 
-    <div data-role="content" >
-        <h2>One</h2>
+    <div class="row">
+        <div class="span12 center">
+            <div class="row">
+                <div class="span2 offset3 text-center">
+                    <a class="menu-button" href="#two" ><img src="img/fa_vat.png" /></a>
+                    <a class="menu-button" href="#two" ><img src="img/sp_detaliczna.png" /></a>
+                </div>
+                <div class="span2 text-center">
+                    <a class="menu-button" href="#two" ><img src="img/kontrahenci.png" /></a>
+                    <a class="menu-button" href="#two" ><img src="img/magazyn.png" /></a>
+                </div>
+                <div class="span2 text-center">
+                    <a class="menu-button" href="#two" ><img src="img/konfiguracja.png" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <p>I have an id of "one" on my page container. I'm first in the source order so I'm shown when the page loads.</p>
-
-        <p>This is a multi-page boilerplate template that you can copy to build your first jQuery Mobile page. This template contains multiple "page" containers inside, unlike a <a href="page-template.html"> single page template</a> that has just one page within it.</p>
-        <p>Just view the source and copy the code to get started. All the CSS and JS is linked to the jQuery CDN versions so this is super easy to set up. Remember to include a meta viewport tag in the head to set the zoom level.</p>
-        <p>You link to internal pages by referring to the ID of the page you want to show. For example, to <a href="#two" >link</a> to the page with an ID of "two", my link would have a <code>href="#two"</code> in the code.</p>
-
-        <h3>Show internal pages:</h3>
-        <p><a href="#two" data-role="button">Show page "two"</a></p>
-        <p><a href="#popup"data-role="button" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
-    </div><!-- /content -->
-
-    <div data-role="footer" data-theme="d">
-        <h4>Page Footer</h4>
-    </div><!-- /footer -->
-</div><!-- /page one -->
+</div>
 
 
 <!-- Start of second page: #two -->
