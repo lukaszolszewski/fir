@@ -13,7 +13,7 @@
     <script type="text/javascript" charset="utf-8" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.0.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
-
+    <script type="text/javascript" charset="utf-8" src="js/database.js"></script>
 </head>
 <body>
 
@@ -33,7 +33,7 @@
                 </div>
                 <div class="span2 text-center">
                     <a class="menu-button" href="#two" ><img src="img/kontrahenci.png" /></a>
-                    <a class="menu-button" href="#two" ><img src="img/magazyn.png" /></a>
+                    <a class="menu-button" href="#warehouse" ><img src="img/magazyn.png" /></a>
                 </div>
                 <div class="span2 text-center">
                     <a class="menu-button" href="#two" ><img src="img/konfiguracja.png" /></a>
@@ -83,6 +83,42 @@
         <h4>Page Footer</h4>
     </div><!-- /footer -->
 </div><!-- /page popup -->
+
+<!-- Warehouse -->
+
+<div data-role="page" id="warehouse">
+    <div data-role="header" data-theme="a">
+        <h1>Magazyn</h1>
+    </div>
+    <div data-role="content">
+        <a href="#new-product" class="btn">Dodaj nowy produkt</a>
+    </div>
+</div>
+
+<div data-role="page" id="new-product">
+    <div data-role="content" data-theme="a">
+        <input type="text" name="product-name" id="product-name" />
+        <input type="text" name="product-code" id="product-code" />
+        <input type="text" name="product-pkwiu" id="product-pkwiu" />
+        <input type="textarea" name="product-description" id="product-description"/>
+        <div id="addbtn">
+            <a href="#" class="btn" onclick="addProduct()">add Product</a>
+        </div>
+        <div id="showbtn">
+            <a href="#" class="btn" onclick="getProduct()">show Product</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    var displayProduct = function() {
+        var name = document.getElementById("product-name").value;
+        navigator.notification.alert(name);
+    }
+
+</script>
+
+<!-- /Warehouse -->
 
 
 <script type="text/javascript">
