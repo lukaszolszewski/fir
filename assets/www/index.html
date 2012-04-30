@@ -18,12 +18,12 @@
 <body>
 
 <!-- Start of Main Page -->
-<div data-role="page" id="mainPage" data-theme="a">
+<div class="box-horizontal" data-role="page" id="mainPage" data-theme="a">
     <div class="row">
         <div class="span12 center">
             <div class="row">
                 <div class="span2 offset3 text-center">
-                    <a class="menu-button" href="#two" data-transition="none"><img src="img/fa_vat.png" /></a>
+                    <a class="menu-button" href="invoice.html" data-transition="none"><img src="img/fa_vat.png" /></a>
                     <a class="menu-button" href="#two" data-transition="none"><img src="img/sp_detaliczna.png" /></a>
                 </div>
                 <div class="span2 text-center">
@@ -38,33 +38,19 @@
     </div>
 </div>
 
-<!-- Start of second page: #two -->
-<div data-role="page" id="two">
-
-    <div data-role="header">
-        <div data-role="header">
-            <a href="index.html" data-icon="arrow-l" data-transition="none">Back</a>
-            <h1>Faktury</h1>
-        </div>
-    </div><!-- /header -->
-
-    <div data-role="content" data-theme="f">
-        <h2>Two</h2>
-        <p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>
-        <p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>
-        <p><a href="#mainPage" data-direction="reverse" data-transition="none" data-role="button" data-theme="b">Back to page "one"</a></p>
-
-    </div><!-- /content -->
-
-
-</div><!-- /page two -->
 
 <script type="text/javascript">
-    $(document).bind( "mobileinit", function() {
-        // Make your jQuery Mobile framework configuration changes here!
 
-        $.mobile.allowCrossDomainPages = true;
-    });
+    window.addEventListener('load', function () {
+        document.addEventListener('deviceready', function () {
+            try{
+                FIR.run("init");
+            }catch(e){
+                alert(e);
+            }
+        }, false);
+    }, false);
+
 </script>
 </body>
 </html>

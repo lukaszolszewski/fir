@@ -24,7 +24,10 @@
 }
 
 #mainPage {
-    display: -webkit-box;
+}
+
+.box-horizontal {
+    display: -webkit-box!important;
     -webkit-box-orient: horizontal;
     -webkit-box-pack: center;
     -webkit-box-align: center;
@@ -61,4 +64,23 @@
     .text-center-resonse {
         text-align: inherit;
     }
+}
+
+.button-search {
+    width: 20%;
+}
+
+.search-box .ui-listview-filter{
+    margin: 0;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#07bd03), color-stop(100%,#037f00));
+    border: 1px solid #56A00E;
+}
+.search-box > div {
+    margin: 0;
+}
+.ui-content {
+    padding: 0;
+}
+.ui-content .ui-listview{
+    margin: 0px;
 }

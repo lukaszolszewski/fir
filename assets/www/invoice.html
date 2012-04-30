@@ -9,11 +9,49 @@
     <script type="text/javascript" charset="utf-8" src="js/cordova-1.6.1.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.0.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="js/ejs_production.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/view.js"></script>
+
     <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
 
 </head>
 <body>
+<div data-role="page" id="two">
+
+    <div data-role="header">
+        <div data-role="header">
+            <a class="box-horizontal" href="index.html" data-icon="arrow-l" data-transition="none">Powrót</a>
+            <h1>Faktury</h1>
+        </div>
+    </div>
+    <div data-role="content" class="ui-content" role="main" data-theme="f">
+         <div class="content-primary search-box">
+          <ul id="invoiceList" data-role="listview" data-filter="true" data-theme="f" class="ui-listview">
+
+          </ul>
+       </div>
+
+    </div>
+
+    </div>
 
 
+</div><!-- /page two -->
+<script type="text/javascript">
+
+    window.addEventListener('load', function () {
+        document.addEventListener('deviceready', function () {
+            try{
+                FIR.run("init");
+                FIR.run(FIR.const.CONTROLLER, "invoice", "init", ["aparam"]);
+            }catch(e){
+                alert(e);
+            }
+        }, false);
+    }, false);
+
+</script>
 </body>
 </html>
