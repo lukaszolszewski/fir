@@ -12,8 +12,7 @@
 
         render: function(eventName) {
 
-            console.log(this.model.toJSON());
-            //$(this.el).html(this.template(this.model.toJSON()));
+            $(this.el).html(this.template(this.model.toJSON()));
             return this;
         }
     });
@@ -24,15 +23,21 @@
 
         el: $('#invoiceList'),
 
+        isRender : false,
+
         initialize: function() {
             this.model.bind("reset", this.render, this);
         },
 
         render: function(eventName) {
 
-            _.each(this.model.models, function(invoice) {
-                $(this.el).append(new FIR.views.InvoiceListItemView({model: invoice}).render().el);
-            }, this);
+            if (!this.isRender){
+                _.each(this.model.models, function(invoice) {
+                    $(this.el).append(new FIR.views.InvoiceListItemView({model: invoice}).render().el);
+                }, this);
+
+                this.isRender = true;
+            }
 
             return this;
         }

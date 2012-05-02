@@ -84,3 +84,23 @@
 .ui-content .ui-listview{
     margin: 0px;
 }
+
+.invoice-detalis {
+    display: -webkit-box!important;
+    -webkit-box-orient: horizontal;
+}
+.invoice-detalis span.box-start{
+    -webkit-box-flex: 1;
+    padding-left: 3%;
+    text-align: left;
+    display: block;
+}
+.invoice-detalis span.box-end{
+    padding-right: 3%;
+    -webkit-box-flex: 1;
+    text-align: right;
+    display: block;
+}
+.ui-header .ui-btn, .ui-footer .ui-btn {
+    margin: .7em 5px;
+}
