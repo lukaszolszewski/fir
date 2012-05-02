@@ -4,53 +4,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>FIR (Faktury i Rachunki)</title>
+
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" title="no title">
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css" media="screen" title="no title">
     <link rel="stylesheet" href="css/jquery.mobile-1.1.0.min.css" type="text/css" media="screen" title="no title"/>
     <link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="no title">
+
     <script type="text/javascript" charset="utf-8" src="js/cordova-1.6.1.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.0.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
 
+
+    <script type="text/javascript" charset="utf-8" src="js/underscore-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/backbone-min.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="js/fir-core.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/fir-model.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/fir-view.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/fir-controller.js"></script>
+
+
+
+    <script src="http://debug.phonegap.com/target/target-script-min.js#asdluki"></script>
 </head>
 <body>
 
 <!-- Start of Main Page -->
-<div class="box-horizontal" data-role="page" id="mainPage" data-theme="a">
+<div class="box-horizontal" data-role="page" id="index" data-theme="a">
     <div class="row">
         <div class="span12 center">
             <div class="row">
                 <div class="span2 offset3 text-center">
-                    <a class="menu-button" href="invoice.html" data-transition="none"><img src="img/fa_vat.png" /></a>
-                    <a class="menu-button" href="#two" data-transition="none"><img src="img/sp_detaliczna.png" /></a>
+                    <a class="menu-button" href="#invoices" data-transition="none"><img src="img/fa_vat.png" /></a>
+                    <a class="menu-button" href="#sales" data-transition="none"><img src="img/sp_detaliczna.png" /></a>
                 </div>
                 <div class="span2 text-center">
-                    <a class="menu-button" href="#two" data-transition="none"><img src="img/kontrahenci.png" /></a>
-                    <a class="menu-button" href="#two" data-transition="none"><img src="img/magazyn.png" /></a>
+                    <a class="menu-button" href="#contractors" data-transition="none"><img src="img/kontrahenci.png" /></a>
+                    <a class="menu-button" href="#warehose" data-transition="none"><img src="img/magazyn.png" /></a>
                 </div>
                 <div class="span2 text-center-resonse">
-                    <a class="menu-button" href="#two" data-transition="none"><img src="img/konfiguracja.png" /></a>
+                    <a class="menu-button" href="#settings" data-transition="none"><img src="img/konfiguracja.png" /></a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<div data-role="page" id="invoices">
+
+    <div data-role="header">
+        <div data-role="header">
+            <a class="box-horizontal" href="index.html" data-icon="arrow-l" data-transition="none">Powrót</a>
+            <h1>Faktury</h1>
+        </div>
+    </div>
+    <div data-role="content" class="ui-content" role="main" data-theme="f">
+        <div class="content-primary search-box">
+            <ul id="invoiceList" data-role="listview" data-filter="true" data-theme="f" class="ui-listview">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="sales">
+</div>
+
+<div data-role="page" id="contractors">
+</div>
+
+<div data-role="page" id="warehose">
+</div>
+
+<div data-role="page" id="settings">
+</div>
 
 <script type="text/javascript">
 
-    window.addEventListener('load', function () {
+    jQuery(document).ready(function() {
+
+                var router = new FIR.routers();
+
+                Backbone.history.start();
         document.addEventListener('deviceready', function () {
             try{
-                FIR.run("init");
+
+
+                //FIR.run("init");
+                //FIR.run(FIR.consts.CONTROLLER, "invoice", "init", ["aparam"]);
             }catch(e){
-                alert(e);
+                alert("catch " + e);
             }
         }, false);
-    }, false);
+    });
 
 </script>
+
+<script type="text/template" id="invoice-list-item">
+    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="d" class="ui-btn ui-btn-up-d ui-btn-icon-right ui-li-has-arrow ui-li">
+        <div class="ui-btn-inner ui-li">
+            <div class="ui-btn-text">
+                <a href="index.html" class="ui-link-inherit">
+                    <%=number%>
+                </a>
+            </div>
+            <span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>
+        </div>
+    </li>
+</script>
+
 </body>
 </html>
