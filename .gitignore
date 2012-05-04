@@ -1,4 +1,5 @@
 .idea/
 README
-out/*
-Fir.*
+out/
+Fir.iml
+Fir.apk
