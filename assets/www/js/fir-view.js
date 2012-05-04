@@ -23,8 +23,6 @@
 
         el: $('#invoiceList'),
 
-        isRender : false,
-
         initialize: function() {
             this.model.bind("reset", this.render, this);
         },
@@ -34,8 +32,6 @@
             _.each(this.model.models, function(invoice) {
                 $(this.el).append(new FIR.views.InvoiceListItemView({model: invoice}).render().el);
             }, this);
-
-            this.isRender = true;
 
             return this;
         }
@@ -74,9 +70,30 @@
                 $(this.el).append(new FIR.views.ContractorListItemView({model: invoice}).render().el);
             }, this);
 
-            this.isRender = true;
+            return this;
+        }
+    });
+    /**
+     *
+     * @type {FIR.views.contractorFormView}
+     */
+    FIR.views.ContractorFormView = Backbone.View.extend({
+
+        el: $('#contractorForm'),
+
+        initialize: function() {
+        },
+
+        render: function(eventName) {
+
+            var form = this.options.form.render();
+
+            console.log(form.el);
+
+            $(this.el).append(form.el);
 
             return this;
         }
     });
+
 }());

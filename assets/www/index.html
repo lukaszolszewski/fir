@@ -8,13 +8,6 @@
     <link rel="stylesheet" href="css/jquery.mobile-1.1.0.min.css" type="text/css" media="screen" title="no title"/>
     <link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="no title">
 
-    <script type="text/javascript" charset="utf-8" src="js/cordova-1.6.1.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.0.min.js"></script>
-
-    <script type="text/javascript" charset="utf-8" src="js/underscore-min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/backbone-min.js"></script>
-
 </head>
 <body>
 
@@ -97,7 +90,7 @@
         </div>
     </div>
     <div data-role="content" class="ui-content" role="main" data-theme="f">
-        <form id="addContractorForm" action="#addContractorForm" method="POST">
+        <form id="contractorForm" action="#addContractorForm" method="POST">
             <div data-role="fieldcontain">
                 <label for="name">Nazwa firmy:</label>
                 <input type="text" name="name" id="name" value="" placeholder="Nazwa firmy"  />
@@ -224,6 +217,38 @@
     </li>
 </script>
 
+
+<script type="text/template" id="formTamplate">
+    <form id="own" action="" method="">
+        {{fieldsets}}
+    </form>
+</script>
+
+<script type="text/template" id="formTamplatefieldset">
+    {{fields}}
+</script>
+
+<script type="text/template" id="formTamplatefield">
+    <div data-role="fieldcontain">
+        <label for="name">{{title}}></label>
+        <input type="text" name="{{title}}" value="{{title}}" placeholder="{{title}}" />
+        <div class="bbf-editor bbf-editor{{type}}">{{editor}}</div>\
+        <div class="bbf-help">{{help}}</div>
+    </div>
+</script>
+
+
+<script type="text/javascript" charset="utf-8" src="js/cordova-1.6.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.0.min.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="js/underscore-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/backbone-min.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="js/backbone-forms.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery-ui-editors.js"></script>
+
+
 <script type="text/javascript" charset="utf-8" src="js/fir-core.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/fir-model.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/fir-view.js"></script>
@@ -235,8 +260,18 @@
 
     jQuery(document).ready(function() {
 
-                var router = new FIR.routers();
-                Backbone.history.start();
+        var templates = {
+            form : $('#formTamplate').html(),
+            fieldset: $('#formTamplatefieldset').html(),
+            field : $('#formTamplatefield').html()
+        };
+        //console.log(templates);
+        Backbone.Form.setTemplates(templates);
+
+
+        var router = new FIR.routers();
+        Backbone.history.start();
+
         document.addEventListener('deviceready', function () {
             try{
 

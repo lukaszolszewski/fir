@@ -16,7 +16,24 @@
      * Model Kontrahent
      * @type {FIR.models.Contractor}
      */
-    FIR.models.Contractor = Backbone.Model.extend();
+    FIR.models.Contractor = Backbone.Model.extend({
+
+        schema : {
+
+            name : { dataType: 'Text', validators: ['required'] },
+            nip :  { dataType: 'Text', validators: ['required'] },
+            rgon : { dataType: 'Text', validators: ['required'] },
+            firstname : { dataType: 'Text', validators: ['required'] },
+            lastname :  { dataType: 'Text', validators: ['required'] },
+            streetAddress : { dataType: 'Text', validators: ['required'] },
+            city : { dataType: 'Text', validators: ['required'] },
+            zipCode : { dataType: 'Text', validators: ['required'] },
+            country : { dataType: 'Text', validators: ['required'] },
+            phone : { dataType: 'Text', validators: ['required'] },
+            email : { dataType: 'email', validators: ['required', 'email'] }
+
+        }
+    });
 
     FIR.models.ContractorCollection = Backbone.Collection.extend({
 

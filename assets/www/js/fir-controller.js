@@ -42,6 +42,15 @@
         }
     };
 
+    FIR.controllers.addContractor = function()
+    {
+        var
+            ContractorForm = new Backbone.Form({model: new FIR.models.Contractor}),
+            ContractorView = new FIR.views.ContractorFormView( { form : ContractorForm });
+
+        ContractorView.render();
+    };
+
     FIR.controllers.addContractorForm = function()
     {
 
@@ -66,6 +75,7 @@
               warehose : "warehose",
               settings : "settings",
               addInvoice : "addInvoice",
+              addContractor : "addContractor",
               addContractorForm : "addContractorForm"
            },
            index: FIR.controllers.index,
@@ -75,6 +85,7 @@
            warehose: FIR.controllers.warehose,
            settings : FIR.controllers.settings,
            addInvoice : FIR.controllers.addInvoice,
+           addContractor : FIR.controllers.addContractor,
            addContractorForm : FIR.controllers.addContractorForm
     });
 
