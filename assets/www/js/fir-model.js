@@ -1,16 +1,80 @@
 (function() {
 
     FIR.models = {};
-
+    /**
+     * Model Faktury
+     * @type {FIR.models.Invoice}
+     */
     FIR.models.Invoice = Backbone.Model.extend();
 
     FIR.models.InvoiceCollection = Backbone.Collection.extend({
 
-        model : FIR.models.Invoice,
+        model : FIR.models.Invoice
+
+    });
+    /**
+     * Model Kontrahent
+     * @type {FIR.models.Contractor}
+     */
+    FIR.models.Contractor = Backbone.Model.extend();
+
+    FIR.models.ContractorCollection = Backbone.Collection.extend({
+
+        model : FIR.models.Contractor
 
     });
 
     FIR.providers = {};
+
+    FIR.providers.Contractor = {};
+
+    FIR.providers.Contractor.getAll = function()
+    {
+        var Contractor = FIR.models.Contractor,
+            collection = [
+                new Contractor({
+                    name : "Łukasz Olszewski",
+                    nip : "657-255-97-11",
+                    rgon: "260568650",
+                    firstname : "Łukasz",
+                    lastname : "Olszewski",
+                    streetAddress : "ul. Warszawska 161/243",
+                    city : "Kielce",
+                    zipCode : "25-547",
+                    country : "Poland",
+                    phone : "511063950",
+                    email: "asdluki@gmail.com"
+                }),
+                new Contractor({
+                    name : "Łukasz Olszewski",
+                    nip : "657-255-97-11",
+                    rgon: "260568650",
+                    firstname : "Łukasz",
+                    lastname : "Olszewski",
+                    streetAddress : "ul. Warszawska 161/243",
+                    city : "Kielce",
+                    zipCode : "25-547",
+                    country : "Poland",
+                    phone : "511063950",
+                    email: "asdluki@gmail.com"
+                }),
+                new Contractor({
+                    name : "Łukasz Olszewski",
+                    nip : "657-255-97-11",
+                    rgon: "260568650",
+                    firstname : "Łukasz",
+                    lastname : "Olszewski",
+                    streetAddress : "ul. Warszawska 161/243",
+                    city : "Kielce",
+                    zipCode : "25-547",
+                    country : "Poland",
+                    phone : "511063950",
+                    email: "asdluki@gmail.com"
+                })
+            ];
+
+        return new FIR.models.ContractorCollection(collection);
+    }
 
     FIR.providers.Invoice = {};
 

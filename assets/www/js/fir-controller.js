@@ -8,11 +8,16 @@
 
     FIR.controllers.invoices = function(){
 
-        var
-        Invoices = FIR.providers.Invoice.getAll(),
-        InvoiceListView = new FIR.views.InvoiceListView({ model : Invoices});
+        (this.renderInvoices === undefined) && (this.renderInvoices = false);
 
-        InvoiceListView.render();
+        if (!this.renderInvoices){
+            var
+            Invoices = FIR.providers.Invoice.getAll(),
+            InvoiceListView = new FIR.views.InvoiceListView({ model : Invoices});
+
+            InvoiceListView.render();
+            this.renderInvoices = true;
+        }
     };
 
     FIR.controllers.addInvoice = function(){
@@ -24,6 +29,23 @@
     };
 
     FIR.controllers.contractors = function(){
+
+       (this.renderContractors === undefined) && (this.renderContractors = false);
+
+        if (!this.renderContractors){
+            var
+                Contractor = FIR.providers.Contractor.getAll(),
+                ContractorListView = new FIR.views.ContractorListView({ model : Contractor});
+
+            ContractorListView.render();
+            this.renderContractors = true;
+        }
+    };
+
+    FIR.controllers.addContractorForm = function()
+    {
+
+        alert("form execute");
 
     };
 
@@ -43,7 +65,8 @@
               contractors : "contractors",
               warehose : "warehose",
               settings : "settings",
-              addInvoice : "addInvoice"
+              addInvoice : "addInvoice",
+              addContractorForm : "addContractorForm"
            },
            index: FIR.controllers.index,
            invoices: FIR.controllers.invoices,
@@ -51,7 +74,8 @@
            contractors: FIR.controllers.contractors,
            warehose: FIR.controllers.warehose,
            settings : FIR.controllers.settings,
-           addInvoice : FIR.controllers.addInvoice
+           addInvoice : FIR.controllers.addInvoice,
+           addContractorForm : FIR.controllers.addContractorForm
     });
 
 }());

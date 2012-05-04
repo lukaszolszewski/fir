@@ -5,15 +5,12 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>FIR (Faktury i Rachunki)</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" title="no title">
-    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css" media="screen" title="no title">
     <link rel="stylesheet" href="css/jquery.mobile-1.1.0.min.css" type="text/css" media="screen" title="no title"/>
     <link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="no title">
 
     <script type="text/javascript" charset="utf-8" src="js/cordova-1.6.1.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.0.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/bootstrap.min.js"></script>
 
     <script type="text/javascript" charset="utf-8" src="js/underscore-min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/backbone-min.js"></script>
@@ -82,8 +79,78 @@
         </div>
     </div>
     <div data-role="content" class="ui-content" role="main" data-theme="f">
+        <div class="content-primary search-box">
+            <ul id="contractorList" data-role="listview" data-filter="true" data-theme="f" class="ui-listview">
+                <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="d" class="ui-btn ui-btn-up-d ui-btn-icon-right ui-li-has-arrow ui-li">
+                    <a href="#addContractor" data-role="button" data-transition="none" data-icon="plus">Dodaj Kontrachenta</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
+<div data-role="page" id="addContractor">
+    <div data-role="header" data-position="fixed">
+        <div data-role="header">
+            <a href="#contractors" data-icon="arrow-l" data-transition="none">Powrót</a>
+            <h1>Nowy Kontrahent</h1>
+        </div>
+    </div>
+    <div data-role="content" class="ui-content" role="main" data-theme="f">
+        <form id="addContractorForm" action="#addContractorForm" method="POST">
+            <div data-role="fieldcontain">
+                <label for="name">Nazwa firmy:</label>
+                <input type="text" name="name" id="name" value="" placeholder="Nazwa firmy"  />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">NIP:</label>
+                <input type="text" name="name" id="nip" value="" placeholder="NIP" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">Regon:</label>
+                <input type="text" name="regon" value="" placeholder="Regon" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">Imie:</label>
+                <input type="text" name="firstname" value="" placeholder="Imię" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">Nazwisko:</label>
+                <input type="text" name="lastname" value="" placeholder="Nazwisko" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">Ulica i numer domu:</label>
+                <input type="text" name="streetAddress" value="" placeholder="Ulica i numer domu" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">Miasto:</label>
+                <input type="text" name="city" value="" placeholder="Miasto" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">Kod pocztowy:</label>
+                <input type="text" name="zipCode" value="" placeholder="Kod pocztowy" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">Kraj:</label>
+                <input type="text" name="country" value="Polska" placeholder="Kraj"  />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">Telefon:</label>
+                <input type="text" name="tel" value="" placeholder="Telefon"  />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">E-mail:</label>
+                <input type="text" name="email"  value="" placeholder="E-mail"  />
+            </div>
 
+            <fieldset class="ui-grid-a">
+                <div class="ui-block-a"><button type="submit" data-theme="d" data-mini="true">Cancel</button></div>
+                <div class="ui-block-b">
+                    <input name="submit" type="submit" value="Zapisz" data-theme="a" data-mini="true" />
+                </div>
+            </fieldset>
+
+        </form>
     </div>
 </div>
 
@@ -141,6 +208,22 @@
     </li>
 </script>
 
+<script type="text/template" id="contractor-list-item">
+    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="d" class="ui-btn ui-btn-up-d ui-btn-icon-right ui-li-has-arrow ui-li">
+        <div class="ui-btn-inner ui-li">
+            <div class="ui-btn-text">
+                <a href="index.html" class="ui-link-inherit invoice-detalis">
+                    <span class="box-start">
+                        <span class="normal"><%= nip %></span><Br />
+                        <span class="bold"><%= name %></span>
+                    </span>
+                </a>
+            </div>
+            <span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>
+        </div>
+    </li>
+</script>
+
 <script type="text/javascript" charset="utf-8" src="js/fir-core.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/fir-model.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/fir-view.js"></script>
@@ -152,10 +235,10 @@
 
     jQuery(document).ready(function() {
 
-        document.addEventListener('deviceready', function () {
-            try{
                 var router = new FIR.routers();
                 Backbone.history.start();
+        document.addEventListener('deviceready', function () {
+            try{
 
                 //FIR.run("init");
                 //FIR.run(FIR.consts.CONTROLLER, "invoice", "init", ["aparam"]);

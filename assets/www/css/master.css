@@ -101,6 +101,13 @@
     text-align: right;
     display: block;
 }
-.ui-header .ui-btn, .ui-footer .ui-btn {
-    margin: .7em 5px;
+.normal {
+    font-weight: normal;
+}
+.bold {
+    font-weight: bold;
+}
+
+#addContractorForm {
+    padding: 3%;
 }
